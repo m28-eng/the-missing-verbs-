@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11172f">
+<title>The Missing Verbs — Detective Grammar Quest</title>
+<style>
+:root{--night:#11172f;--purple:#32336b;--purple2:#7763b0;--gold:#ffce72;--yellow:#ffe79a;--cream:#fff8eb;--ink:#252747;--mint:#86e1c7;--pink:#ffadc0;--error:#f07186;--shadow:0 20px 45px #06092568}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--cream);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 80% 3%,#554582c9,transparent 32%),radial-gradient(circle at 10% 60%,#1855778c,transparent 38%),linear-gradient(165deg,#0b1731,#28264c 56%,#10223b);overflow-x:hidden}
+body:before{position:fixed;content:"";inset:0;pointer-events:none;opacity:.42;background:radial-gradient(#fce6b6 1.15px,transparent 1.6px) 19px 37px / 103px 117px,radial-gradient(#d2f6f5 1px,transparent 1.4px) 43px 61px / 171px 159px}
+button,input{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible{outline:4px solid #4decd1;outline-offset:4px}
+button:disabled{cursor:default;opacity:.6}.hidden{display:none!important}
+.wrap{width:min(1260px,calc(100% - 26px));margin:auto;padding:14px 0 46px;position:relative;z-index:1}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:8px 6px 20px}.brand{display:flex;align-items:center;gap:15px;min-width:0}.logo{width:75px;height:75px;display:grid;place-items:center;flex-shrink:0;border-radius:25px;background:linear-gradient(155deg,#ffeeb6,#ffb85a);box-shadow:inset 3px 4px #fff6d6,0 6px #9c6348,0 10px 35px #ffd88b44;font-size:45px;transform:rotate(-5deg)}
+.overline{color:#f4c786;font-weight:900;letter-spacing:.28em;text-transform:uppercase;font-size:11px}h1{font:800 clamp(30px,4.2vw,58px)/1.02 Georgia,serif;letter-spacing:-.02em;margin:5px 0 8px;color:#fff1cf;text-shadow:0 5px #11132e}h1 span{color:#ffe08e}.tagline{color:#dcd9f6;font-size:14px;max-width:750px;line-height:1.45;margin:0}.hero-right{flex-shrink:0;text-align:center;background:#151d3ca9;border:1px solid #f4d9ac55;padding:12px 17px;border-radius:18px;box-shadow:var(--shadow)}.case-label{color:#dac8ef;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:900}.case-number{color:#ffdb8b;font:800 23px Georgia,serif}
+.toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 15px}.chip{background:#fff9ec;color:#34335c;border:2px solid #ebcb91;border-radius:16px;padding:9px 13px;font-weight:900;box-shadow:0 5px 0 #20254a}.chip em{color:#7358a4;font-style:normal}.tool{background:#333d68;border:1px solid #dfc896;color:#ffe4a9;border-radius:15px;padding:10px 14px;font-weight:850}.tool:hover{background:#47557d}.spacer{flex:1}
+.layout{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:18px;align-items:start}
+.mansion{background:linear-gradient(120deg,#514281,#292c5e 70%,#244264);border:6px solid #ab8bba;border-radius:26px;box-shadow:var(--shadow),inset 0 0 0 5px #2a2a584c;overflow:hidden;position:relative;min-height:700px}
+.mansion:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 10%,#c4a7d42b,transparent 47%)}.mansion-head{text-align:center;padding:18px 20px 16px;position:relative;z-index:1;background:linear-gradient(180deg,#1d214cb3,transparent)}.mansion-head h2{font:800 28px Georgia,serif;color:#ffe1a7;margin:2px 0 6px}.mansion-head p{font-size:13px;color:#e9dcf9;margin:0;line-height:1.4}
+.roof{height:65px;width:78%;margin:8px auto -13px;border-radius:150px 150px 0 0;background:linear-gradient(150deg,#5e5383,#22254b);border:5px solid #c19a94;border-bottom:0;box-shadow:0 -10px 30px #8e84ff22;position:relative}.roof:after{content:"✦  ✦  ✦";position:absolute;inset:15px 0 auto;text-align:center;color:#ffe4a8;font-size:19px;letter-spacing:38px;padding-left:38px}
+.corridor{padding:21px 17px 25px;position:relative;z-index:1;background:linear-gradient(0deg,#171d41,#624b78 70%,#414176);border-top:11px solid #bb8c8e}.corridor:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.26;background:repeating-linear-gradient(90deg,transparent 0 100px,#f6d7bd 103px 106px,transparent 109px 205px)}
+.doors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px 8px;position:relative;z-index:1}.door{min-height:143px;padding:9px 5px 6px;border:5px solid #f6d392;border-bottom-width:9px;border-radius:54px 54px 10px 10px;background:linear-gradient(110deg,#a36ba0 0,#6b568f 28%,#3c477d 86%);color:white;position:relative;box-shadow:inset 5px 0 #fff5dd29,inset -5px 0 #14163055,0 9px 0 #1a1a3e,0 15px 18px #0004;transition:.17s transform,.17s filter}
+.door:hover{transform:translateY(-5px);filter:brightness(1.08)}.door:active{transform:translateY(-1px)}.door:before{content:"";position:absolute;inset:17px 10px 8px;border-radius:36px 36px 5px 5px;border:2px solid #ffd9a774;pointer-events:none}.door:after{content:"";height:10px;width:10px;border-radius:50%;background:#ffca61;position:absolute;right:13%;top:62%;box-shadow:0 0 0 4px #ffe4a733}
+.door-num{display:block;position:relative;z-index:1;border-radius:999px;background:#2e2d57b8;border:1px solid #ffe8b775;padding:2px 7px;font-size:12px;font-weight:900;width:max-content;margin:0 auto 13px}.door-icon{display:block;font-size:38px;position:relative;z-index:1;filter:drop-shadow(0 5px 2px #0004);line-height:1}.door-word{display:block;font-weight:950;position:relative;z-index:1;font-size:12px;letter-spacing:.06em;margin-top:10px;color:#ffe5aa;text-transform:uppercase}.door.solved{background:linear-gradient(130deg,#46bba9,#26798f 70%,#2b547a);border-color:#aaf3d9}.door.solved:after{background:#e6ffea}.door.active{outline:4px solid #fff8cf;outline-offset:2px}.door.solved .door-word{color:#d8fff2}
+.mansion-footer{text-align:center;position:relative;z-index:1;margin:10px 17px 17px;padding:11px 8px;background:#131d44cc;border-radius:15px;color:#d6e3ed;font-size:12px;line-height:1.5;border:1px solid #ecd6ab55}
+.casebook{background:linear-gradient(160deg,#fff9ef,#f5e7dc);color:#2c2b46;border:6px solid #f1d4a2;border-radius:26px;min-height:720px;box-shadow:var(--shadow);padding:22px;position:relative;overflow:hidden}.casebook:before{content:"";position:absolute;inset:10px;border:2px dashed #c89e8f70;border-radius:16px;pointer-events:none}.casebook>*{position:relative;z-index:1}
+.case-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}.case-id{background:#332950;color:#fff0c7;font-size:11px;font-weight:950;letter-spacing:.1em;border-radius:99px;padding:7px 12px;text-transform:uppercase}.level{color:#806e8a;font-size:12px;font-weight:850}.casebook h2{font:800 clamp(26px,3.2vw,38px)/1.09 Georgia,serif;margin:16px 0 10px;color:#342749}.casebook p{font-size:14px;line-height:1.5}.intro-img{height:200px;display:flex;justify-content:center;align-items:center;background:radial-gradient(circle,#d5e9ed,#f0dce9);border-radius:21px;border:3px solid #d9c7df;margin:22px 0}.intro-img span{font-size:115px;filter:drop-shadow(0 13px 4px #6b5f8355)}.intro-steps{display:grid;gap:8px;margin:17px 0}.intro-step{background:#fff;border:2px solid #e5d6d0;padding:12px 15px;border-radius:13px;font-size:14px;font-weight:780}.intro-step b{color:#5f4d8a}.cta{background:linear-gradient(180deg,#ffdb91,#f3b75d);border:2px solid #bc7f43;border-radius:14px;color:#55371f;font-weight:950;padding:13px 20px;box-shadow:0 5px 0 #ab8059}.cta:hover{filter:brightness(1.06)}.cta:active{transform:translateY(2px);box-shadow:0 3px 0 #ab8059}
+.room-title{margin:0!important}.room-header{display:flex;align-items:center;justify-content:space-between;gap:10px}.room-meta{color:#795d85;font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:11px}.mini-progress{display:flex;gap:7px;margin:13px 0}.pip{height:8px;flex:1;background:#dfd6e8;border-radius:99px}.pip.done{background:linear-gradient(90deg,#62cdb7,#1a9baa)}
+.scene{background:linear-gradient(150deg,#b6d6fc,#f6c7d5);border:4px solid #d3c0dc;border-radius:19px;overflow:hidden;min-height:200px;box-shadow:0 8px 16px #4c387e13}.scene svg{display:block;width:100%;height:auto;aspect-ratio:640/360}
+.stage-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:#8c6190;font-weight:950;margin:17px 0 6px}.task-q{font-size:23px;font-weight:950;line-height:1.24;color:#34264b;margin:4px 0 15px}.target{font-size:29px;color:#8356b1;font-weight:950}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:10px 0}.option{padding:15px 5px;background:linear-gradient(175deg,#f6efff,#e6ddf5);color:#432e6b;border:2px solid #c0a8d9;border-radius:14px;font-size:19px;font-weight:900;box-shadow:0 5px 0 #b9a4ce}.option:hover{background:#f3e7ff}.option.wrong{background:#ffe3e7;border-color:#dc8291}.option.correct{background:#d1f6e9;border-color:#46bca0}
+.text-field{display:flex;gap:7px;margin:10px 0;align-items:stretch}.answer-input{min-width:0;flex:1;border:2px solid #bca9d0;border-radius:14px;padding:11px 13px;color:#2b2d46;background:#fff;font-size:19px;font-weight:900}.checkbtn{padding:11px 17px;border:none;border-radius:13px;color:#fff;background:linear-gradient(155deg,#6c5ab1,#493b91);font-weight:950}.sentence{font-size:18px;line-height:1.5;background:white;border:2px solid #e7dae3;border-radius:12px;padding:14px;margin:9px 0}.blank{color:#8659a7;font-weight:950;white-space:nowrap}.caption-choices{display:grid;gap:9px}.caption-choice{background:white;border:2px solid #ded2e6;padding:13px;border-radius:12px;text-align:left;color:#382c4c;font-weight:800;font-size:15px}.caption-choice:hover{background:#f2ebff}.caption-choice.wrong{background:#ffe1e7;border-color:#e18d9c}
+.feedback{min-height:43px;padding:10px 13px;margin:11px 0 2px;border:2px solid #e9cdab;border-radius:12px;background:#fff6d9;color:#715036;font-size:13px;font-weight:790;line-height:1.45}.feedback.error{background:#ffebee;border-color:#ff9fb0;color:#923e5c}.hint-btn,.plain-btn{background:none;border:1px solid #baa6c3;border-radius:10px;padding:8px 10px;color:#6c5486;font-size:12px;font-weight:900}.hint-btn:hover,.plain-btn:hover{background:#eadff2}.task-foot{display:flex;justify-content:space-between;gap:9px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.room-done{text-align:center}.room-done .big{font-size:67px;line-height:1.3}.room-done .letter{font-size:50px;font-weight:950;color:#a36d45;background:#ffefd2;border:4px solid #eac485;border-radius:17px;padding:5px 19px;display:inline-block;box-shadow:0 6px 0 #e1c8a3}.room-done h2{margin:12px 0}.spoken{border-radius:13px;padding:14px;text-align:left;background:white;border:2px dashed #b9a7cd;font-size:15px;line-height:1.5}
+.codebar{padding:15px;margin:14px 0 0;border:1px solid #ffdaa477;border-radius:17px;background:#111c3dcc;position:relative;z-index:1}.codehead{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#ffebb9;font-size:12px;text-transform:uppercase;font-weight:950;letter-spacing:.09em}.codeletters{display:flex;gap:5px;justify-content:center;margin-top:13px}.slot{width:32px;height:40px;border-bottom:3px solid #fedba3;display:grid;place-items:center;color:#fff2b5;font-size:23px;font-weight:950;font-family:Georgia,serif}.slot.blank{color:#93a0ba}.slot.spacer{width:10px;border-bottom:0}.info-note{font-size:12px;color:#c7c8e5;text-align:center;padding:0 12px;margin-top:13px;line-height:1.45}
+.ending{text-align:center}.ending .shine{font-size:75px;filter:drop-shadow(0 7px 8px #64538444)}.ending h2{font-size:37px}.location{background:#fff0c7;border:2px solid #e7c38b;color:#5c3e34;border-radius:14px;padding:14px;font:900 25px Georgia,serif;letter-spacing:.13em;margin:15px auto}
+.notebook{margin-top:12px;background:#1a2242bb;color:#fbecd8;border:1px solid #ffdd9a5c;border-radius:16px;padding:12px 15px}.notebook summary{cursor:pointer;font-weight:950;color:#ffe5ac}.verbtable{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}.verbpair{background:#ffffff13;border-radius:8px;padding:7px 10px;font-size:13px;font-weight:800}.verbpair b{color:#ffe39b}
+@media(max-width:1030px){.layout{grid-template-columns:1fr}.mansion{min-height:auto}.casebook{min-height:0}.doors{grid-template-columns:repeat(5,minmax(0,1fr))}.door{min-height:133px}.scene svg{max-height:355px}}
+@media(max-width:600px){.wrap{width:min(100% - 18px,760px)}.hero{margin:5px 2px 15px;align-items:flex-start}.logo{height:54px;width:54px;font-size:30px;border-radius:18px}.brand{gap:10px}.overline{font-size:9px;letter-spacing:.14em}h1{font-size:31px}.tagline{font-size:12px}.hero-right{display:none}.chip,.tool{font-size:12px;padding:8px 10px;border-radius:12px}.mansion{border-width:4px}.mansion-head h2{font-size:24px}.roof{height:48px}.corridor{padding:17px 10px 19px}.doors{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px 5px}.door{min-height:106px;border-width:3px;border-bottom-width:6px;border-radius:25px 25px 8px 8px;padding:5px 1px}.door:before{inset:11px 4px 5px;border-radius:19px 19px 4px 4px}.door:after{width:5px;height:5px;right:10%;top:57%}.door-num{font-size:9px;padding:2px 5px;margin-bottom:8px}.door-icon{font-size:25px}.door-word{font-size:9px;margin-top:8px}.mansion-footer{font-size:11px}.casebook{padding:18px 13px;border-width:4px}.casebook h2{font-size:29px}.intro-img{height:145px}.intro-img span{font-size:78px}.task-q{font-size:19px}.target{font-size:26px}.option{font-size:16px;padding:12px 4px}.codeletters{gap:4px}.slot{width:24px;height:34px;font-size:19px}.sentence{font-size:16px}.scene{min-height:0}.room-done .letter{font-size:40px}}
+@media(max-width:360px){.doors{grid-template-columns:repeat(5,minmax(0,1fr))}.door{min-height:97px}.door-icon{font-size:21px}.door-word{font-size:8px}.slot{width:21px}.codeletters{gap:2px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{background:#fff;color:#222}.hero,.toolbar,.mansion,.task-foot,.notebook,.info-note{display:none!important}.wrap{max-width:780px}.layout{display:block}.casebook{box-shadow:none;border-color:#ddd}.ending{display:block}}
+
+/* Deeper investigation challenges */
+.detective-prompt{white-space:pre-line;font-size:21px;line-height:1.4}
+.detective-note{background:#fff7cf;border:2px solid #dfc07b;border-left:7px solid #ca9354;padding:13px 14px;border-radius:11px;white-space:pre-line;font-size:15px;line-height:1.55;color:#5e482b;font-weight:730;margin:10px 0}
+.field-instruction{font-size:13px;color:#644d72;font-weight:800}
+.detective-pair{display:grid;gap:10px;margin:15px 0}
+.two-input{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two-input label{display:grid;gap:6px;font-size:12px;color:#674e75;font-weight:900}
+.two-input .answer-input{width:100%;padding:14px 12px}
+.detective-pair>.checkbtn{justify-self:start;padding:13px 17px}
+.detective-entry{display:flex;gap:9px;margin:14px 0;align-items:stretch}
+.detective-entry>.answer-input{flex:1;min-width:0}
+.detective-entry>.checkbtn{flex-shrink:0}
+.tile-tray{margin:14px 0}
+.tile-assembly,.tile-source{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;min-height:68px;padding:12px;border-radius:14px;margin-bottom:12px}
+.tile-assembly{background:#fffbe9;border:2px dashed #c9a775}
+.tile-source{background:#e8e1f6;border:2px solid #c7b3e0}
+.tile-placeholder{color:#9a8f9e;align-self:center;font-weight:750}
+.tile{border:2px solid #aa8cbb;background:#fff;color:#423258;padding:9px 12px;border-radius:12px;font-size:15px;font-weight:850;box-shadow:0 3px #ac99b5}
+.tile.selected-tile{background:#f8e1aa;border-color:#d0a85b}
+.tile:disabled{opacity:.25}
+.tile-controls{display:flex;gap:9px;flex-wrap:wrap}
+@media(max-width:550px){.detective-entry{flex-direction:column}.two-input{gap:7px}.detective-prompt{font-size:19px}.tile{padding:9px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand"><div class="logo" aria-hidden="true">🕵️</div><div>
+      <div class="overline">The Secret Grammar Agency</div>
+      <h1>The Missing <span>Verbs</span></h1>
+      <p class="tagline">The Golden Verb Book has disappeared! Analyse witness reports, correct mistakes and solve different mysteries to collect 10 secret letters.</p>
+    </div></div>
+    <div class="hero-right"><div class="case-label">TOP SECRET • FILE</div><div class="case-number">№ 010</div></div>
+  </header>
+  <div class="toolbar">
+    <div class="chip">🔎 Rooms solved: <em id="roomsCounter">0</em>/10</div>
+    <div class="chip">⭐ Challenges: <em id="challengeCounter">0</em>/30</div>
+    <div class="spacer"></div>
+    <button id="wordlistToggle" class="tool" type="button">📖 Verb notebook</button>
+    <button id="resetGame" class="tool" type="button">↺ Restart</button>
+  </div>
+  <div class="layout">
+    <section class="mansion" aria-label="Detective mansion with ten rooms">
+      <div class="mansion-head"><h2>🏰 Mystery Mansion</h2><p>Choose a door. Each room has THREE DIFFERENT challenges and one secret letter.</p></div>
+      <div class="roof" aria-hidden="true"></div>
+      <div class="corridor"><div class="doors" id="doors"></div></div>
+      <div class="mansion-footer">🪄 Every correct answer moves the investigation forward. Your clues are saved on this device.</div>
+      <div class="codebar">
+        <div class="codehead"><span>🔐 Secret location</span><span id="codeCount">0 / 10 letters</span></div>
+        <div id="codeLetters" class="codeletters" aria-label="Collected letters"></div>
+      </div>
+    </section>
+    <section class="casebook" id="workarea" aria-live="polite">
+      <div id="introView">
+        <div class="case-head"><span class="case-id">CASE № 010</span><span class="level">A1–A2 · Ages 9–13</span></div>
+        <h2>The Golden Verb Book is missing!</h2>
+        <p>Detective Fox needs your help! The book is missing, and its past-tense verbs are scattered around the mansion.</p>
+        <div class="intro-img"><span role="img" aria-label="Detective with a magnifying glass">🦊🔍</span></div>
+        <div class="intro-steps">
+          <div class="intro-step"><b>01</b> Open a mystery door.</div>
+          <div class="intro-step"><b>02</b> Decode a diary, repair a witness statement or arrange clues.</div>
+          <div class="intro-step"><b>03</b> Answer questions, form Past Simple sentences and read evidence.</div>
+          <div class="intro-step"><b>04</b> Collect a letter to solve the mystery!</div>
+        </div>
+        <button type="button" id="startBtn" class="cta">🔎 Start the investigation</button>
+      </div>
+      <div id="roomView" class="hidden">
+        <div class="room-header"><span class="case-id" id="roomBadge">ROOM 01</span><span class="room-meta" id="roomProgress">1 / 3</span></div>
+        <h2 class="room-title" id="roomTitle"></h2>
+        <div class="mini-progress" id="stepPips"></div>
+        <div class="scene" id="scene"></div>
+        <div id="taskBox"></div>
+        <div id="response" role="status"></div>
+        <div class="task-foot"><button id="hintBtn" class="hint-btn" type="button">💡 Need a hint?</button><button id="backBtn" class="plain-btn" type="button">← Choose another door</button></div>
+      </div>
+      <div id="completeView" class="hidden room-done">
+        <div class="case-head"><span class="case-id" id="completeBadge">ROOM SOLVED</span><span class="level">CASE EVIDENCE</span></div>
+        <div class="big">🗝️✨</div><h2>Clue discovered!</h2>
+        <p>You solved three different challenges. The secret letter is:</p>
+        <div class="letter" id="earnedLetter">C</div>
+        <p id="completionLine"></p>
+        <div class="spoken"><b>🎤 Speaking bonus:</b><br><span id="speakPrompt"></span><br><small id="speakModel" style="color:#806b91"></small></div>
+        <div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:17px">
+          <button type="button" class="cta" id="anotherBtn">🚪 Next mystery door →</button>
+          <button type="button" class="plain-btn" id="replayRoom">Practise this room again</button>
+        </div>
+      </div>
+      <div id="endingView" class="hidden ending"><div class="case-head"><span class="case-id">CASE CLOSED</span><span class="level">DETECTIVE AWARD</span></div>
+        <div class="shine">📖🏆</div><h2>You solved the mystery!</h2><p>All thirty detective challenges are complete. The Golden Verb Book is waiting in the...</p>
+        <div class="location">CLOCK TOWER</div><p><b>Fantastic work, Detective!</b> You solved 30 challenges using 10 irregular verbs.</p>
+        <button type="button" class="cta" id="printAward">🏅 Print your award</button>
+        <button type="button" class="plain-btn" id="endingRestart">Play again</button>
+      </div>
+    </section>
+  </div>
+  <details class="notebook" id="notebook"><summary>📚 Open the detective's verb notebook (optional support)</summary><div class="verbtable" id="verbList"></div><p class="info-note">Note: <b>read → read</b> has the same spelling, but the past form sounds like “red” (/red/). Only these ten irregular verbs appear as lesson targets.</p></details>
+  <p class="info-note">Fully self-contained HTML with 30 varied detective challenges. Typed answers and word order are checked; spoken bonus answers are practised with the teacher.</p>
+</div>
+<script>
+(()=>{'use strict';
+const lessons=[
+ {base:'come',past:'came',letter:'C',name:'Museum entrance',icon:'🏛️',prop:'museum',subject:'The detective',fill:'Yesterday, the detective ___ to the museum.',prefix:'Yesterday, the detective',after:'to the museum.',evidence:['The detective came to the museum.','The detective wore a red hat.','The detective made a cake.'],speak:'Tell us where you came from yesterday.',model:'Yesterday, I came from school.'},
+ {base:'go',past:'went',letter:'L',name:'Secret lighthouse',icon:'🌊',prop:'lighthouse',subject:'Luna',fill:'Last Saturday, Luna ___ to the lighthouse.',prefix:'Last Saturday, Luna',after:'to the lighthouse.',evidence:['Luna went to the lighthouse.','Luna read a secret letter.','Luna had a golden key.'],speak:'Where did you go last weekend?',model:'Last weekend, I went to the park.'},
+ {base:'have',past:'had',letter:'O',name:'Golden key room',icon:'🗝️',prop:'key',subject:'The guard',fill:'Yesterday, the guard ___ a golden key.',prefix:'Yesterday, the guard',after:'a golden key.',evidence:['The guard had a golden key.','The guard saw a shadow.','The guard went to the museum.'],speak:'Tell us what you had for breakfast.',model:'I had eggs for breakfast.'},
+ {base:'make',past:'made',letter:'C',name:'Enchanted kitchen',icon:'🧁',prop:'cake',subject:'The chef',fill:'Yesterday, the chef ___ a purple cake.',prefix:'Yesterday, the chef',after:'a purple cake.',evidence:['The chef made a purple cake.','The chef wore a blue coat.','The chef read a letter.'],speak:'Tell us what you made last week.',model:'I made a card for my friend.'},
+ {base:'read',past:'read',letter:'K',name:'Whispering library',icon:'✉️',prop:'letter',subject:'Mia',fill:'Last night, Mia ___ a secret letter.',prefix:'Last night, Mia',after:'a secret letter.',evidence:['Mia read a secret letter.','Mia made a purple cake.','Mia saw a whale.'],speak:'What did you read recently?',model:'Yesterday, I read a funny story.'},
+ {base:'say',past:'said',letter:'T',name:'Talking parrot',icon:'🦜',prop:'parrot',subject:'The parrot',fill:'Yesterday, the parrot ___, “Look upstairs!”',prefix:'Yesterday, the parrot',after:'“Look upstairs!”',evidence:['The parrot said, “Look upstairs!”','The parrot wore a red hat.','The parrot had a golden key.'],speak:'Tell us something your friend said yesterday.',model:'My friend said, “Hello!”'},
+ {base:'see',past:'saw',letter:'O',name:'Shadow gallery',icon:'👤',prop:'shadow',subject:'The detective',fill:'Yesterday, the detective ___ a strange shadow.',prefix:'Yesterday, the detective',after:'a strange shadow.',evidence:['The detective saw a strange shadow.','The detective had a purple cake.','The detective made a letter.'],speak:'What did you see yesterday?',model:'I saw a rainbow yesterday.'},
+ {base:'stand',past:'stood',letter:'W',name:'Tower doorway',icon:'🚪',prop:'door',subject:'The guard',fill:'Last night, the guard ___ by the door.',prefix:'Last night, the guard',after:'by the door.',evidence:['The guard stood by the door.','The guard went to the beach.','The guard made a cake.'],speak:'Where did you stand yesterday?',model:'I stood by the classroom door.'},
+ {base:'think',past:'thought',letter:'E',name:'Puzzle laboratory',icon:'💭',prop:'thought',subject:'Milo',fill:'Yesterday, Milo ___ about a secret code.',prefix:'Yesterday, Milo',after:'about a secret code.',evidence:['Milo thought about a secret code.','Milo wore a red hat.','Milo came to the museum.'],speak:'What did you think about yesterday?',model:'I thought about my holiday.'},
+ {base:'wear',past:'wore',letter:'R',name:'Costume room',icon:'🎩',prop:'hat',subject:'The suspect',fill:'At the party, the suspect ___ a red hat.',prefix:'At the party, the suspect',after:'a red hat.',evidence:['The suspect wore a red hat.','The suspect went to the lighthouse.','The suspect said, “Hello!”'],speak:'What did you wear yesterday?',model:'Yesterday, I wore a blue T-shirt.'}
+];
+// Each room uses different actions and question formats. No three-step answer echo.
+const missions=[
+ [
+  {type:'pair',title:'The diary with two missing words',prompt:'Yesterday, Detective Fox ___ (go) to the museum and ___ (see) a blue light.',answers:['went','saw'],hint:'There are TWO different past forms: go and see. Write one in each box.'},
+  {type:'fix',title:'A false witness statement',prompt:'Mia weared a blue coat when she arrived at the museum.',answer:'wore',hint:'Find the incorrect past form of wear and write only the corrected word.'},
+  {type:'choice',title:'A clue in the guard’s pocket',prompt:'The guard ___ a golden key in his pocket yesterday.',options:['came','stood','had','said'],answer:'had',hint:'Which past form means “possessed” or “owned”?'},
+ ],
+ [
+  {type:'logic',title:'Three witnesses, one truth',note:'At six o’clock, Luna came to the lighthouse. The guard stood beside the door. At seven, Luna went home.',prompt:'Who stood beside the lighthouse door?',options:['Milo','The guard','Luna'],answer:'The guard',hint:'Find the sentence with stood. Who is the subject?'},
+  {type:'transform',title:'Change the timeline',prompt:'TODAY: Luna thinks about the strange light.\nYESTERDAY: Rewrite the whole sentence in Past Simple.',answers:['Yesterday, Luna thought about the strange light.','Luna thought about the strange light yesterday.'],hint:'Think changes in Past Simple. Write a FULL sentence with yesterday.'},
+  {type:'order',title:'Rebuild the broken message',prompt:'Tap the tiles in the correct order to reconstruct the detective’s message.',words:['Milo','read','a','note','at','the','lighthouse.'],hint:'Start with the person. Then add the verb and the object, followed by the place.'}
+ ],
+ [
+  {type:'text',title:'The golden key record',prompt:'Yesterday, the guard ___ (have) a golden key.',answer:'had',hint:'Use the irregular past form of have.'},
+  {type:'choice',title:'The guard speaks',prompt:'The guard ___, “This key is important!”',options:['wore','said','went','saw'],answer:'said',hint:'Choose the past form of the verb we use before spoken words.'},
+  {type:'question',title:'Interview the detective',prompt:'Write a correct Past Simple QUESTION using these clues:\nthe detective / see / the key / yesterday',answers:['Did the detective see the key yesterday?'],hint:'Start with Did. After did, the main verb stays in its base form.'}
+ ],
+ [
+  {type:'pair',title:'Two facts from the kitchen',prompt:'Yesterday, the chef ___ (make) a cake, and the visitors ___ (have) some.',answers:['made','had'],hint:'Two separate verbs: make and have.'},
+  {type:'fix',title:'The chef’s wrong report',prompt:'Milo sayed, “Delicious!”',answer:'said',hint:'Say does not take -ed in Past Simple. Write the correct word.'},
+  {type:'logic',title:'Who examined the recipe?',note:'The chef wore a blue apron. Mia read the recipe. The cake looked purple.',prompt:'What did Mia read?',options:['The menu','The recipe','A secret letter'],answer:'The recipe',hint:'Look at the exact object after read in the witness report.'}
+ ],
+ [
+  {type:'text',title:'The secret diary',prompt:'Last night, Mia ___ (read) a secret diary.',answer:'read',hint:'Read has the same spelling in the present and past, but in the past it sounds like “red”.'},
+  {type:'transform',title:'Yesterday’s thoughts',prompt:'TODAY: Detective Fox thinks about the diary.\nYESTERDAY: Rewrite the whole sentence in Past Simple.',answers:['Yesterday, Detective Fox thought about the diary.','Detective Fox thought about the diary yesterday.'],hint:'Keep the same meaning, but change the time and the verb think.'},
+  {type:'order',title:'The librarian’s warning',prompt:'Rebuild the librarian’s message by tapping the tiles.',words:['The','librarian','said,','“Be','quiet!”'],hint:'First identify who speaks, then what the librarian said.'}
+ ],
+ [
+  {type:'choice',title:'The parrot remembers',prompt:'The parrot ___, “Look upstairs!”',options:['wore','went','said','made'],answer:'said',hint:'This verb introduces the parrot’s spoken words.'},
+  {type:'fix',title:'A spelling trap',prompt:'The detective comed to the room last night.',answer:'came',hint:'The past form of come is irregular. Type only the correct past verb.'},
+  {type:'pair',title:'What did the parrot notice?',prompt:'The parrot ___ (see) the thief while the guard ___ (stand) by the window.',answers:['saw','stood'],hint:'You need two different verbs: see and stand.'}
+ ],
+ [
+  {type:'logic',title:'The gallery witness reports',note:'The detective saw a shadow. The guard wore a cape. Mia went upstairs.',prompt:'Who went upstairs?',options:['The detective','The guard','Mia'],answer:'Mia',hint:'Locate went in the witness report, and read the subject.'},
+  {type:'text',title:'The artist’s sketch',prompt:'The artist ___ (make) a picture of the shadow yesterday.',answer:'made',hint:'We use the past form of make when somebody creates something.'},
+  {type:'question',title:'Question the witness',prompt:'Write a correct Past Simple QUESTION using these clues:\nthe guard / wear / a cape / yesterday',answers:['Did the guard wear a cape yesterday?'],hint:'Use Did + subject + base verb (NOT the past form).'}
+ ],
+ [
+  {type:'pair',title:'Midnight at the tower',prompt:'At midnight, the guard ___ (stand) by the door, and Detective Fox ___ (come) upstairs.',answers:['stood','came'],hint:'Two actions, two different irregular verbs: stand and come.'},
+  {type:'choice',title:'The door opens',prompt:'When the door opened, everyone ___ a strange light.',options:['had','said','saw','stood'],answer:'saw',hint:'Which past form means “noticed with their eyes”?'},
+  {type:'fix',title:'The wrong direction',prompt:'Luna goed downstairs after midnight.',answer:'went',hint:'The past of go does not end in -ed. Type one corrected word.'}
+ ],
+ [
+  {type:'transform',title:'The hidden code',prompt:'TODAY: Milo thinks about the secret code.\nYESTERDAY: Rewrite the whole sentence in Past Simple.',answers:['Yesterday, Milo thought about the secret code.','Milo thought about the secret code yesterday.'],hint:'Use the past form of think and include yesterday.'},
+  {type:'logic',title:'The colours of the clues',note:'Mia said the code was BLUE. The detective looked at a RED card. Milo wore a GREEN hat.',prompt:'What colour was the detective’s card?',options:['Green','Blue','Red'],answer:'Red',hint:'Look at the sentence about the detective, not Milo or Mia.'},
+  {type:'order',title:'Rebuild the final code clue',prompt:'Tap the tiles to make a correct Past Simple sentence.',words:['The','guard','had','a','secret','code','yesterday.'],hint:'Begin with the person (subject), then the past verb and the object.'}
+ ],
+ [
+  {type:'text',title:'The suspect’s costume',prompt:'At the party, the suspect ___ (wear) a red hat.',answer:'wore',hint:'Wear is irregular in Past Simple.'},
+  {type:'pair',title:'Two guests tell the story',prompt:'The guests ___ (see) a magician and ___ (think) he was the thief.',answers:['saw','thought'],hint:'Find the separate past forms of see and think.'},
+  {type:'order',title:'The final letter',prompt:'Put the last witness statement in the right order to unlock the clock tower.',words:['Luna','read','the','final','letter','last','night.'],hint:'Subject → past form → object → time phrase.'}
+ ]
+];
+const pastForms=lessons.map(x=>x.past),$=id=>document.getElementById(id),storage='missing-verbs-detective-v2';
+let data={steps:Array(10).fill(0)},selected=-1,notice='',err=false,replaying=-1;
+try{const saved=JSON.parse(localStorage.getItem(storage)||'{}');if(Array.isArray(saved.steps)&&saved.steps.length===10)data.steps=saved.steps.map(v=>Math.min(3,Math.max(0,Number(v)||0)))}catch(e){}
+function save(){try{localStorage.setItem(storage,JSON.stringify(data))}catch(e){}}
+function rngShuffle(arr,seed){let a=[...arr];for(let i=a.length-1;i>0;i--){seed=(seed*1664525+1013904223)>>>0;const j=seed%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]))}
+function renderLeft(){const doors=$('doors');doors.innerHTML='';lessons.forEach((r,i)=>{const b=document.createElement('button');b.className='door'+(data.steps[i]===3?' solved':'')+(selected===i?' active':'');b.type='button';b.setAttribute('aria-label','Open room '+(i+1)+': '+r.name);b.innerHTML=`<span class="door-num">${String(i+1).padStart(2,'0')}</span><span class="door-icon">${data.steps[i]===3?'🔓':r.icon}</span><span class="door-word">${data.steps[i]===3?'Solved':'Room '+(i+1)}</span>`;b.onclick=()=>openRoom(i);doors.append(b)});
+ const solved=data.steps.filter(x=>x===3).length;$('roomsCounter').textContent=solved;$('challengeCounter').textContent=data.steps.reduce((sum,x)=>sum+x,0);$('codeCount').textContent=solved+' / 10 letters';const slots=$('codeLetters');slots.innerHTML='';lessons.forEach((r,i)=>{if(i===5){const gap=document.createElement('span');gap.className='slot spacer';slots.append(gap)}const s=document.createElement('span');s.className='slot'+(data.steps[i]===3?'':' blank');s.textContent=data.steps[i]===3?r.letter:'?';slots.append(s)});
+}
+function setView(name){for(const id of ['introView','roomView','completeView','endingView'])$(id).classList.toggle('hidden',id!==name)}
+function showIntro(){selected=-1;replaying=-1;notice='';setView('introView');renderLeft()}
+function openRoom(i){selected=i;replaying=-1;notice='';err=false;render(); if(matchMedia('(max-width:1030px)').matches)$('workarea').scrollIntoView({behavior:'smooth',block:'start'})}
+function cleanAnswer(value){return String(value||'').toLowerCase().replace(/[\u2019]/g,"'").replace(/[^a-z0-9\s']/g,' ').replace(/\s+/g,' ').trim()}
+function render(){
+ renderLeft();
+ if(data.steps.every(x=>x===3)){selected=-1;setView('endingView');return}
+ if(selected<0){setView('introView');return}
+ const r=lessons[selected],step=data.steps[selected];
+ if(step>=3&&replaying!==selected){showComplete();return}
+ const task=missions[selected][step];
+ setView('roomView');
+ $('roomBadge').textContent='ROOM '+String(selected+1).padStart(2,'0');
+ $('roomTitle').textContent=r.name;
+ $('roomProgress').textContent='CHALLENGE '+(step+1)+' / 3';
+ $('stepPips').innerHTML=[0,1,2].map(n=>`<span class="pip ${n<step?'done':''}"></span>`).join('');
+ $('scene').innerHTML=drawScene(r.prop);
+ $('response').innerHTML='';$('hintBtn').classList.remove('hidden');
+ const box=$('taskBox');box.innerHTML='';
+ const top=document.createElement('div');top.className='stage-label';top.textContent='🔎 CLUE '+(step+1)+' · '+task.title;box.append(top);
+ if(task.note){const note=document.createElement('div');note.className='detective-note';note.textContent='📜 WITNESS REPORT\n'+task.note;box.append(note)}
+ const prompt=document.createElement('div');prompt.className='task-q detective-prompt';prompt.textContent=task.prompt;box.append(prompt);
+ if(['choice','logic'].includes(task.type)){
+   const options=rngShuffle(task.options,selected*121+step*41+55);
+   const choices=document.createElement('div');choices.className=task.type==='logic'?'caption-choices':'choices';
+   options.forEach(item=>{let b=document.createElement('button');b.type='button';b.className=task.type==='logic'?'caption-choice':'option';b.textContent=item;b.onclick=()=>check(cleanAnswer(item)===cleanAnswer(task.answer),b);choices.append(b)});
+   box.append(choices);
+ } else if(task.type==='pair'){
+   const form=document.createElement('form');form.className='detective-pair';form.innerHTML='<p class="field-instruction">Type two DIFFERENT missing verb forms:</p><div class="two-input"><label>First gap<input class="answer-input" id="firstAnswer" type="text" autocapitalize="off" spellcheck="false" autocomplete="off" required maxlength="30" placeholder="First verb"></label><label>Second gap<input class="answer-input" id="secondAnswer" type="text" autocapitalize="off" spellcheck="false" autocomplete="off" required maxlength="30" placeholder="Second verb"></label></div><button class="checkbtn" type="submit">Check evidence ✓</button>';
+   form.onsubmit=e=>{e.preventDefault();check(cleanAnswer($('firstAnswer').value)===cleanAnswer(task.answers[0])&&cleanAnswer($('secondAnswer').value)===cleanAnswer(task.answers[1]),form)};
+   box.append(form);
+ } else if(['text','fix','question','transform'].includes(task.type)){
+   const form=document.createElement('form');form.className='detective-entry';
+   const long=['question','transform'].includes(task.type);
+   const inp=document.createElement('input');inp.className='answer-input';inp.id='answerInput';inp.type='text';inp.autocapitalize='off';inp.spellcheck=false;inp.autocomplete='off';inp.required=true;inp.maxLength=150;inp.placeholder=long?'Write the complete sentence...':task.type==='fix'?'Correct verb only...':'Past form...';
+   const sub=document.createElement('button');sub.className='checkbtn';sub.type='submit';sub.textContent=long?'Check sentence ✓':'Check clue ✓';
+   if(long){form.classList.add('long-entry')};form.append(inp,sub);
+   form.onsubmit=e=>{e.preventDefault();const raw=inp.value;const acceptable=task.answers||[task.answer];check(acceptable.some(a=>cleanAnswer(raw)===cleanAnswer(a)),inp)};
+   box.append(form);
+ } else if(task.type==='order'){
+   const tray=document.createElement('div');tray.className='tile-tray';
+   const picked=document.createElement('div');picked.className='tile-assembly';picked.setAttribute('aria-label','Your sentence');
+   const source=document.createElement('div');source.className='tile-source';source.setAttribute('aria-label','Words to arrange');
+   const bank=rngShuffle(task.words.map((word,index)=>({word,index})),selected*31+step*997+44);
+   let chosen=[];
+   function draw(){picked.innerHTML='';chosen.forEach((idx,pos)=>{const b=document.createElement('button');b.type='button';b.className='tile selected-tile';b.textContent=task.words[idx];b.title='Remove this tile';b.onclick=()=>{chosen.splice(pos,1);draw()};picked.append(b)});if(!chosen.length){const ph=document.createElement('span');ph.className='tile-placeholder';ph.textContent='Build your sentence here →';picked.append(ph)};
+    source.innerHTML='';bank.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='tile';b.textContent=item.word;b.disabled=chosen.includes(item.index);b.onclick=()=>{chosen.push(item.index);draw()};source.append(b)})}
+   draw();tray.append(picked,source);
+   const controls=document.createElement('div');controls.className='tile-controls';
+   const reset=document.createElement('button');reset.type='button';reset.className='plain-btn';reset.textContent='↺ Clear';reset.onclick=()=>{chosen=[];draw()};
+   const submit=document.createElement('button');submit.type='button';submit.className='checkbtn';submit.textContent='Check message ✓';submit.onclick=()=>check(chosen.length===task.words.length&&chosen.every((id,i)=>id===i),picked);
+   controls.append(reset,submit);tray.append(controls);box.append(tray);
+ }
+ if(notice)showNotice(notice,err);
+}
+function showNotice(msg,isError){const d=$('response');d.innerHTML=`<div class="feedback ${isError?'error':''}">${escapeHTML(msg)}</div>`;}
+function check(ok,el){
+ if(selected<0)return;
+ if(ok){data.steps[selected]++;save();notice='✔ Evidence accepted! A NEW challenge is ready.';err=false;
+  if(data.steps[selected]===3){notice='';replaying=-1}
+  render();
+ }else{notice='Not quite. Study the context and try another answer — or open a hint.';err=true;if(el&&el.classList)el.classList.add('wrong');showNotice(notice,true)}
+}
+function hint(){
+ if(selected<0)return;
+ const step=data.steps[selected];
+ if(step>=3)return;
+ showNotice('💡 '+missions[selected][step].hint,false)
+}
+function showComplete(){
+ if(selected<0)return;setView('completeView');const r=lessons[selected];
+ $('completeBadge').textContent='ROOM '+String(selected+1).padStart(2,'0')+' SOLVED';
+ $('earnedLetter').textContent=r.letter;
+ $('completionLine').textContent='Three different pieces of evidence secured. The secret letter is yours!';
+ $('speakPrompt').textContent=r.speak;$('speakModel').textContent='Example: '+r.model;
+ $('anotherBtn').textContent=data.steps.every(x=>x===3)?'🏆 Solve the mystery':'🚪 Next mystery door →'
+}
+function nextRoom(){let next=lessons.findIndex((r,i)=>data.steps[i]<3);if(next<0){selected=-1;render();if(matchMedia('(max-width:1030px)').matches)$('workarea').scrollIntoView({behavior:'smooth'});return}openRoom(next)}
+function drawScene(prop){
+ const G='<defs><linearGradient id="w" x2=".4" y2="1"><stop stop-color="#f3c4ef"/><stop offset="1" stop-color="#a9c6ed"/></linearGradient><linearGradient id="fl" x2="0" y2="1"><stop stop-color="#b5a3d3"/><stop offset="1" stop-color="#5a608f"/></linearGradient><radialGradient id="fur" cx=".3" cy=".2" r=".9"><stop stop-color="#ffdd9e"/><stop offset=".58" stop-color="#e7a96a"/><stop offset="1" stop-color="#ac665f"/></radialGradient><linearGradient id="coat" x2="1" y2="1"><stop stop-color="#3ac4c4"/><stop offset="1" stop-color="#3163a2"/></linearGradient><linearGradient id="gold" x2=".9" y2="1"><stop stop-color="#fff7bb"/><stop offset=".55" stop-color="#ffd45a"/><stop offset="1" stop-color="#c67b26"/></linearGradient><linearGradient id="pink" x2="1" y2="1"><stop stop-color="#fce6ed"/><stop offset="1" stop-color="#b46aaa"/></linearGradient><filter id="ds"><feGaussianBlur stdDeviation="6"/></filter></defs>';
+ const backdrop='<rect width="640" height="360" fill="url(#w)"/><circle cx="540" cy="70" r="77" fill="#fff9df" opacity=".4"/><path d="M0 290Q160 266 320 295T640 286V360H0Z" fill="url(#fl)"/><path d="M0 289Q220 278 440 289T640 288" fill="none" stroke="#f5e8f4" stroke-width="5" opacity=".65"/><ellipse cx="311" cy="322" rx="245" ry="19" fill="#35334f" opacity=".2" filter="url(#ds)"/><rect x="27" y="27" width="82" height="121" rx="40" fill="#fffaf3" opacity=".22" stroke="#fff" stroke-width="7"/><circle cx="68" cy="70" r="23" fill="#ffe9b9" opacity=".7"/>';
+ const fox='<g transform="translate(80 31)"><ellipse cx="158" cy="273" rx="93" ry="13" fill="#1b2841" opacity=".25" filter="url(#ds)"/><path d="M112 179Q70 167 49 208Q36 240 72 244Q108 249 125 220Z" fill="url(#fur)" stroke="#ac7365" stroke-width="3"/><rect x="111" y="180" width="112" height="120" rx="32" fill="url(#coat)"/><path d="M148 185L163 236L178 185" fill="#f9e4cb"/><path d="M162 195L173 236L151 236Z" fill="#ffca6b"/><rect x="123" y="285" width="36" height="33" rx="12" fill="#523f67"/><rect x="182" y="285" width="36" height="33" rx="12" fill="#523f67"/><path d="M115 197L91 254" stroke="#dfab75" stroke-width="29" stroke-linecap="round"/><path d="M217 197L239 256" stroke="#dfab75" stroke-width="29" stroke-linecap="round"/><path d="M104 57L86 4L143 40M203 53L226 4L177 29" fill="url(#fur)" stroke="#995c63" stroke-width="6" stroke-linejoin="round"/><ellipse cx="157" cy="107" rx="93" ry="88" fill="url(#fur)" stroke="#b2786a" stroke-width="4"/><ellipse cx="160" cy="140" rx="60" ry="39" fill="#fff0d5"/><ellipse cx="120" cy="102" rx="16" ry="22" fill="#fff"/><ellipse cx="194" cy="102" rx="16" ry="22" fill="#fff"/><ellipse cx="124" cy="105" rx="9" ry="14" fill="#2a2b4c"/><ellipse cx="191" cy="105" rx="9" ry="14" fill="#2a2b4c"/><circle cx="128" cy="101" r="4" fill="#fff"/><circle cx="195" cy="101" r="4" fill="#fff"/><ellipse cx="160" cy="137" rx="18" ry="12" fill="#4b344b"/><path d="M143 162Q160 175 180 162" stroke="#613f4b" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="103" cy="145" r="10" fill="#f2a4a0" opacity=".7"/><circle cx="211" cy="145" r="10" fill="#f2a4a0" opacity=".7"/><path d="M92 61Q151 8 224 62" stroke="#4d4b81" stroke-width="21" stroke-linecap="round" fill="none"/><path d="M115 35L146 2L192 3L219 40" fill="#57558f" stroke="#353356" stroke-width="4"/><path d="M100 54Q156 41 230 52" fill="none" stroke="#8bcbd2" stroke-width="11" stroke-linecap="round"/></g>';
+ const props={
+ museum:'<g transform="translate(390 74)"><rect x="0" y="46" width="184" height="162" rx="5" fill="#fef1da" stroke="#987db2" stroke-width="7"/><path d="M-17 50L92 0L202 50Z" fill="url(#pink)" stroke="#8f72a2" stroke-width="5"/><rect x="32" y="69" width="35" height="123" rx="10" fill="#d7bfdc"/><rect x="115" y="69" width="35" height="123" rx="10" fill="#d7bfdc"/><rect x="74" y="106" width="38" height="102" rx="14" fill="#4e518b"/><rect x="12" y="36" width="160" height="30" rx="13" fill="url(#gold)"/><text x="92" y="56" text-anchor="middle" font-size="21" font-weight="900" fill="#675275">MUSEUM</text></g>',
+ lighthouse:'<g transform="translate(405 30)"><path d="M0 255Q69 223 170 265" fill="#89bea5"/><path d="M66 63L121 63L138 244L48 244Z" fill="#fff0e7" stroke="#89678f" stroke-width="6"/><path d="M72 86H123M67 135H129M62 183H133" stroke="#e98e97" stroke-width="17"/><path d="M85 27H105V72H85Z" fill="#ffd669" stroke="#7c6a97" stroke-width="5"/><path d="M65 29L96 1L126 29Z" fill="#70668e"/><path d="M53 60L-6 33L44 90Z" fill="#fff7bd" opacity=".75"/><path d="M135 60L198 35L141 91Z" fill="#fff7bd" opacity=".75"/><rect x="85" y="206" width="24" height="38" rx="11" fill="#736b95"/></g>',
+ key:'<g transform="translate(397 88) rotate(-22 120 100)"><ellipse cx="116" cy="105" rx="74" ry="73" fill="url(#gold)" stroke="#b47e2b" stroke-width="8"/><ellipse cx="116" cy="105" rx="34" ry="34" fill="#b7d1ec" stroke="#c18a3d" stroke-width="7"/><rect x="177" y="87" width="111" height="35" rx="13" fill="url(#gold)" stroke="#b47e2b" stroke-width="6"/><path d="M245 120V162H271V137H290V121" fill="url(#gold)" stroke="#b47e2b" stroke-width="6"/><path d="M64 72Q100 38 133 47" fill="none" stroke="#fffadc" stroke-width="13" stroke-linecap="round"/></g>',
+ cake:'<g transform="translate(406 81)"><ellipse cx="102" cy="222" rx="111" ry="23" fill="#8275b9"/><rect x="27" y="102" width="150" height="118" rx="17" fill="url(#pink)" stroke="#9c69a6" stroke-width="6"/><path d="M20 108Q35 67 58 88Q83 59 106 89Q134 60 156 86Q187 72 185 110Q167 152 153 124Q131 155 109 123Q83 151 61 121Q29 150 20 108Z" fill="#ffe4ef" stroke="#e6a7d2" stroke-width="5"/><rect x="84" y="31" width="14" height="46" rx="5" fill="#fbd47b"/><path d="M90 32Q67 14 92 0Q115 20 90 32" fill="#ffa65c"/><circle cx="45" cy="98" r="8" fill="#78dcd0"/><circle cx="142" cy="103" r="8" fill="#fbc774"/></g>',
+ letter:'<g transform="translate(388 91) rotate(7 107 98)"><rect x="9" y="3" width="211" height="204" rx="12" fill="#fff8e4" stroke="#a686ac" stroke-width="7"/><path d="M37 49H189M37 81H167M37 114H182M37 148H143" stroke="#b6a6b8" stroke-width="8" stroke-linecap="round"/><circle cx="166" cy="165" r="25" fill="#e7788e" stroke="#bb556e" stroke-width="4"/><text x="166" y="174" font-size="28" text-anchor="middle" fill="white">✦</text></g>',
+ parrot:'<g transform="translate(414 76)"><path d="M-18 218Q86 195 197 217" stroke="#9b677b" stroke-width="18" fill="none" stroke-linecap="round"/><ellipse cx="95" cy="112" rx="67" ry="90" fill="#55c6a8" stroke="#2a888c" stroke-width="6"/><path d="M70 102Q110 87 132 123L114 175Q70 154 70 102Z" fill="#36a7d3"/><circle cx="101" cy="75" r="41" fill="#91e6a6"/><circle cx="118" cy="70" r="11" fill="#fff"/><circle cx="122" cy="70" r="6" fill="#2d3154"/><path d="M124 83L172 100L123 118Z" fill="url(#gold)"/><path d="M64 185L40 260L92 205" fill="#38a6bf" stroke="#34818c" stroke-width="4"/><path d="M125 29Q141 -8 163 17" stroke="#73a9c3" stroke-width="9" fill="none"/></g>',
+ shadow:'<g transform="translate(402 43)"><rect x="4" y="9" width="174" height="245" rx="18" fill="#343557" stroke="#fce3b9" stroke-width="12"/><circle cx="91" cy="94" r="42" fill="#a9a5ce" opacity=".35"/><path d="M45 222Q19 148 91 140Q169 148 137 222Z" fill="#a9a5ce" opacity=".33"/><path d="M4 3L62 22L4 175M178 3L121 22L178 175" fill="#d6b7d9" stroke="#9e8bb8" stroke-width="5"/><circle cx="65" cy="105" r="6" fill="#ffe2b1"/><circle cx="116" cy="105" r="6" fill="#ffe2b1"/></g>',
+ door:'<g transform="translate(403 59)"><rect x="26" y="1" width="173" height="244" rx="76" fill="#5d6a9a" stroke="#fff0c5" stroke-width="11"/><rect x="47" y="20" width="128" height="226" rx="60" fill="url(#pink)" stroke="#a783b4" stroke-width="6"/><path d="M110 35V227" stroke="#fff6d1" stroke-width="5" opacity=".55"/><circle cx="157" cy="148" r="13" fill="url(#gold)"/><path d="M0 249H221" stroke="#9a7194" stroke-width="14" stroke-linecap="round"/></g>',
+ thought:'<g transform="translate(391 41)"><ellipse cx="112" cy="101" rx="109" ry="78" fill="#fff9e9" stroke="#b59bcf" stroke-width="7"/><circle cx="47" cy="204" r="17" fill="#fff9e9" stroke="#b59bcf" stroke-width="5"/><circle cx="82" cy="176" r="25" fill="#fff9e9" stroke="#b59bcf" stroke-width="5"/><text x="112" y="120" fill="#9169a2" font-size="74" font-weight="900" text-anchor="middle">?</text><path d="M35 94L68 76M160 84L195 69" stroke="#f5d68b" stroke-width="8" stroke-linecap="round"/></g>',
+ hat:'<g transform="translate(395 90)"><ellipse cx="104" cy="189" rx="121" ry="28" fill="#602e69" stroke="#c190aa" stroke-width="7"/><path d="M30 182L55 50Q103 0 152 50L180 182Z" fill="url(#pink)" stroke="#98538b" stroke-width="7"/><rect x="33" y="132" width="145" height="33" rx="13" fill="#6f3576"/><rect x="93" y="132" width="33" height="33" rx="4" fill="url(#gold)"/><rect x="101" y="139" width="17" height="19" rx="2" fill="#6f3576"/><path d="M75 59Q95 31 112 32" fill="none" stroke="#fff7dc" stroke-width="12" stroke-linecap="round"/></g>'
+ };
+ return `<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated mystery clue scene">${G}${backdrop}${fox}${props[prop]||props.key}<path d="M39 299q21 -24 43 0M541 295q19 -23 45 0" fill="none" stroke="#e3f8df" stroke-width="9" opacity=".7"/><circle cx="576" cy="51" r="8" fill="#fff" opacity=".65"/><circle cx="358" cy="74" r="5" fill="#ffe3bc"/></svg>`
+}
+$('startBtn').onclick=()=>openRoom(data.steps.findIndex(x=>x<3)<0?0:data.steps.findIndex(x=>x<3));$('hintBtn').onclick=hint;$('backBtn').onclick=showIntro;$('anotherBtn').onclick=nextRoom;
+$('replayRoom').onclick=()=>{if(selected<0)return;data.steps[selected]=0;replaying=selected;save();notice='';render()};
+$('resetGame').onclick=()=>{if(!confirm('Start a new case? This will clear all collected letters.'))return;data.steps=Array(10).fill(0);save();showIntro()};$('endingRestart').onclick=()=>{if(!confirm('Restart the whole mystery?'))return;data.steps=Array(10).fill(0);save();showIntro()};$('printAward').onclick=()=>window.print();
+$('wordlistToggle').onclick=()=>{$('notebook').open=!$('notebook').open;$('notebook').scrollIntoView({behavior:'smooth',block:'center'})};$('verbList').innerHTML=lessons.map(r=>`<div class="verbpair">${r.base} → <b>${r.past}</b></div>`).join('');
+render();
+})();
+</script>
+</body>
+</html>
